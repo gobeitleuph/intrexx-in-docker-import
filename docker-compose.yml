@@ -94,10 +94,10 @@ services:
       DB_PASSWORD: ${PG_PASSWORD}
       IX_DISTRIBUTED: ${IX_DISTRIBUTED}
     volumes:
-      - portal-data:/opt/intrexx/org
+#      - portal-data:/opt/intrexx/org
       - intrexx-cfg:/opt/intrexx/cfg
-#      - ${IX_PORTAL_DIR_HOST}:/opt/intrexx/org
-#      - ${IX_PORTAL_DIR_HOST}:${IX_PORTAL_ZIP_MNTPT}
+      - ${IX_PORTAL_DIR_HOST}:/opt/intrexx/org
+#     - ${IX_PORTAL_DIR_HOST}:${IX_PORTAL_ZIP_MNTPT}
 
   # The Intrexx instance(s) that run the portal
   intrexx:
@@ -137,9 +137,9 @@ services:
       - "${IX_REST_HOST_PORT}:8101"
       - "${IX_ODATA_HOST_PORT}:9090"
     volumes:
-      - portal-data:/opt/intrexx/org
+#      - portal-data:/opt/intrexx/org
       - intrexx-cfg:/opt/intrexx/cfg
-#      - ${IX_PORTAL_DIR_HOST}:/opt/intrexx/org
+      - ${IX_PORTAL_DIR_HOST}:/opt/intrexx/org
     healthcheck:
       test: ["CMD-SHELL", "curl -f localhost:1337/service/ping/"]
       interval: 5s
